@@ -20,6 +20,24 @@ AgroTrust QRiosity provides GET APIs for farmer and consumer transparency. QRios
 
    0.1.0
 
+### How do I get set up?
+
+Below instructions assume Linux nodes and have been thoroughly tested on Ubuntu 18.04 LTS.
+
+Configuration
+
+-  None.
+
+Setup instructions
+
+-  Clone this repo at desired location
+-  Open terminal and run 'npm install'
+-  Run node app.js launching AgroTrust Master on TCP port 9000.
+
+   Dependencies
+
+Please refer to package.json
+
 ### How to Test?
 
 Run load-test-data.sh bash script in AgroTrust-Master repository to load a dummy data simulating a value chain with below details:
