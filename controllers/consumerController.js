@@ -1,5 +1,29 @@
+const streamer = require('../utils/streamer');
+
 exports.knowYourFarmer = async (req, res) => {
-	res.status(200).send('DEVELOPMENT IN PROGRESS');
+	let btuid = req.params.btuid;
+	let matcode = req.params.matcode;
+
+	//get BTU object
+	let crops = [];
+	crops.push(matcode.toString().substr(0, 4));
+	let btuObject = await streamer.fetchOne('btu', btuid, 'GFPCL', crops);
+
+	let originObject = await streamer.fetchOne(
+		'origin',
+		btuObject.origin,
+		'GFPCL',
+		crops
+	);
+
+	let farmerObject = await streamer.fetchOne(
+		'farmer',
+		originObject.farmerCode,
+		'GFPCL',
+		crops
+	);
+
+	res.status(200).json({ ...farmerObject, ...originObject });
 };
 
 exports.knowYourFood = async (req, res) => {

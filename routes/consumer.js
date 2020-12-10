@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const consumer = require('../controllers/consumerController');
 
-router.get('/kyfarmer/:btuid', consumer.knowYourFarmer);
-router.get('/kyfood/:btuid', consumer.knowYourFood);
-router.get('/kyjourney/:btuid', consumer.knowYourJourney);
-router.get('/kymoney/:btuid', consumer.knowYourMoney);
+router.get('/kyfarmer/:matcode/:btuid', consumer.knowYourFarmer);
+router.get('/kyfood/:matcode/:btuid', consumer.knowYourFood);
+router.get('/kyjourney/:matcode/:btuid', consumer.knowYourJourney);
+router.get('/kymoney/:matcode/:btuid', consumer.knowYourMoney);
 
 module.exports = router;
