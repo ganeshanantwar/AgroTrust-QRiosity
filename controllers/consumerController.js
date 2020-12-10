@@ -23,11 +23,26 @@ exports.knowYourFarmer = async (req, res) => {
 		crops
 	);
 
-	res.status(200).json({ ...farmerObject, ...originObject });
+	return res.status(200).json({ ...farmerObject, ...originObject });
 };
 
 exports.knowYourFood = async (req, res) => {
-	res.status(200).send('DEVELOPMENT IN PROGRESS');
+	let btuid = req.params.btuid;
+	let matcode = req.params.matcode;
+
+	//get BTU object
+	let crops = [];
+	crops.push(matcode.toString().substr(0, 4));
+	let btuObject = await streamer.fetchOne('btu', btuid, 'GFPCL', crops);
+	let skuObject = await streamer.fetchOne(
+		'sku',
+		btuObject.skuCode,
+		'GFPCL',
+		crops
+	);
+	return res
+		.status(200)
+		.json({ mfgDate: btuObject.createdDate, expiry: skuObject.expDays });
 };
 
 exports.knowYourJourney = async (req, res) => {
