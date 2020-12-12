@@ -59,7 +59,7 @@ http://localhost:9000/consumer/kyfood/c003e003/1000001c
 Know Your Journey:
 http://localhost:9000/consumer/kyjourney/c003e003/1000001c
 
-Know Your Money (Work in Progress):
+Know Your Money:
 http://localhost:9000/consumer/kymoney/c003e003/1000001c
 
 BTU IDs which could be tested are:
